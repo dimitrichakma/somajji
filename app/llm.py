@@ -36,9 +36,9 @@ load_dotenv()
 configure_llm_cache()
 
 FAST_MODEL = os.getenv("FAST_MODEL", "claude-haiku-4-5")
-SMART_MODEL = os.getenv("SMART_MODEL", "claude-sonnet-5")
-JUDGE_MODEL = os.getenv("JUDGE_MODEL", "claude-opus-5")
-JUDGE_FAST_MODEL = os.getenv("JUDGE_FAST_MODEL", "claude-sonnet-5")
+SMART_MODEL = os.getenv("SMART_MODEL", "claude-sonnet-5-5")
+JUDGE_MODEL = os.getenv("JUDGE_MODEL", "claude-opus-5-5")
+JUDGE_FAST_MODEL = os.getenv("JUDGE_FAST_MODEL", "claude-sonnet-5-5")
 
 # one shared limiter for every call this process makes. request-rate only
 # (token-rate isn't in langchain-core); mainly there to keep parallel
@@ -52,25 +52,23 @@ fast_llm = ChatAnthropic(
     model=FAST_MODEL, timeout=60, max_tokens=1024, rate_limiter=_rate_limiter
 )
 
-# Sonnet 5 thinks by default; synthesis is "answer from the given context", not
-# a reasoning task, so turn thinking off - it only adds latency and cost here.
+# Sonnet 5.5 rejects thinking={"type": "disabled"} with a 400. Synthesis is
+# "answer from the given context", not a reasoning task, so use "between_tools":
+# the closest thing to thinking off (accepted at effort high or below, no other fields).
 smart_llm = ChatAnthropic(
     model=SMART_MODEL, timeout=90, max_tokens=2048,
-    thinking={"type": "disabled"}, rate_limiter=_rate_limiter,
+    thinking={"type": "between_tools"}, rate_limiter=_rate_limiter,
 )
 
-# Opus 5 is $5/$25 per M tok (5x Sonnet). Bounded grading calls, not open
-# reasoning, so thinking is off by default (JUDGE_THINKING=1 re-enables).
+# Opus 5.5 is $4/$20 per M tok. Thinking cannot be disabled on it (400), so the
+# `thinking` parameter is left out and the model decides how much to think.
 # EVAL_USAGE aborts the whole run at EVAL_MAX_USD.
-_judge_thinking = (
-    {"type": "adaptive"} if os.getenv("JUDGE_THINKING", "0") == "1" else {"type": "disabled"}
-)
 judge_llm = ChatAnthropic(
     model=JUDGE_MODEL, timeout=120, max_tokens=8192,
-    thinking=_judge_thinking, rate_limiter=_rate_limiter, callbacks=[COST_TRACKER],
+    rate_limiter=_rate_limiter, callbacks=[COST_TRACKER],
 )
 
 judge_fast_llm = ChatAnthropic(
     model=JUDGE_FAST_MODEL, timeout=90, max_tokens=8192,
-    thinking={"type": "disabled"}, rate_limiter=_rate_limiter, callbacks=[COST_TRACKER],
+    thinking={"type": "between_tools"}, rate_limiter=_rate_limiter, callbacks=[COST_TRACKER],
 )

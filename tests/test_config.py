@@ -34,6 +34,15 @@ def test_admin_emails_are_split_and_trimmed():
     assert settings.admin_emails == ["a@x.com", "b@x.com"]
 
 
-def test_psycopg_url_drops_the_sqlalchemy_prefix():
-    settings = make_settings()
-    assert settings.psycopg_database_url == "postgresql://u:p@localhost:5432/db"
+@pytest.mark.parametrize(
+    "given",
+    [
+        "postgresql+psycopg://u:p@host:5432/db",
+        "postgresql://u:p@host:5432/db",  # what Railway provides
+        "postgres://u:p@host:5432/db",
+    ],
+)
+def test_database_url_works_in_any_form(given):
+    settings = make_settings(database_url=given)
+    assert settings.sqlalchemy_database_url == "postgresql+psycopg://u:p@host:5432/db"
+    assert settings.psycopg_database_url == "postgresql://u:p@host:5432/db"

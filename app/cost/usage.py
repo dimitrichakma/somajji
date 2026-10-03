@@ -23,8 +23,12 @@ from langchain_core.callbacks import BaseCallbackHandler
 from app.config import get_settings
 
 # USD per 1M tokens: (input, output). https://platform.claude.com/docs pricing.
+# Matched by substring in order, so a more specific id must come before its prefix
+# ("claude-opus-5-5" before "claude-opus-5").
 MODEL_PRICING = {
+    "claude-opus-5-5": (4.0, 20.0),
     "claude-opus-5": (5.0, 25.0),
+    "claude-sonnet-5-5": (2.0, 10.0),
     "claude-sonnet-5": (2.0, 10.0),
     "claude-haiku-4-5": (1.0, 5.0),
 }

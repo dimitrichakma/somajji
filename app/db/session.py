@@ -9,7 +9,7 @@ from app.config import get_settings
 
 @lru_cache
 def get_engine() -> Engine:
-    return create_engine(get_settings().database_url, pool_pre_ping=True)
+    return create_engine(get_settings().sqlalchemy_database_url, pool_pre_ping=True)
 
 
 def get_session() -> Iterator[Session]:

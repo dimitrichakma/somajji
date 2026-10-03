@@ -6,6 +6,18 @@ from pydantic import field_validator
 from pydantic_settings import BaseSettings, NoDecode, SettingsConfigDict
 
 
+# Hosts hand out the database URL in different forms (Railway uses `postgresql://`,
+# some use `postgres://`), so accept any of them and convert to what each library needs.
+_DB_SCHEMES = ("postgresql+psycopg://", "postgresql://", "postgres://")
+
+
+def _with_scheme(url: str, scheme: str) -> str:
+    for prefix in _DB_SCHEMES:
+        if url.startswith(prefix):
+            return scheme + url[len(prefix):]
+    return url
+
+
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
@@ -32,9 +44,14 @@ class Settings(BaseSettings):
         return value
 
     @property
+    def sqlalchemy_database_url(self) -> str:
+        """SQLAlchemy form. Without `+psycopg` it would look for the psycopg2 driver, which we don't install."""
+        return _with_scheme(self.database_url, "postgresql+psycopg://")
+
+    @property
     def psycopg_database_url(self) -> str:
         """Plain `postgresql://` form. `psycopg.connect` rejects the SQLAlchemy `+psycopg` prefix."""
-        return self.database_url.replace("postgresql+psycopg://", "postgresql://", 1)
+        return _with_scheme(self.database_url, "postgresql://")
 
 
 @lru_cache
