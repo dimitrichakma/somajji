@@ -5,5 +5,5 @@ AI helper for community mental health volunteers in the Chittagong Hill Tracts.
 
 **Demo only. Not for real patients.**
 
-Status: planning. The full plan is in `docs/PLAN.md`, and the way it is built is in `docs/WORKFLOW.md`.
-This README is finished in Phase 8 (outline in PLAN.md).
+Status: in development. This is a portfolio project, built one phase at a time. The detailed
+plan is kept private. This README will be finished when the project is deployed.
