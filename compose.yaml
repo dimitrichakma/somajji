@@ -1,0 +1,20 @@
+# Local development only. The password below is not used anywhere real.
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: somajji
+      POSTGRES_PASSWORD: localdev
+      POSTGRES_DB: somajji
+    ports:
+      - "5432:5432"
+    volumes:
+      - somajji_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U somajji"]
+      interval: 3s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  somajji_pgdata:

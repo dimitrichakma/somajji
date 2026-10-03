@@ -10,3 +10,4 @@ data/sources/*.pdf
 eval/results/
 *.log
 .DS_Store
+/Somajji-Concept-Brief-Bangla.pdf
