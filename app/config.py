@@ -29,6 +29,9 @@ class Settings(BaseSettings):
     voyage_api_key: str = ""
     pinecone_api_key: str = ""
     langsmith_api_key: str = ""
+    pinecone_index: str = "somajji-who"
+    voyage_rerank_model: str = "rerank-3-lite"  # empty (VOYAGE_RERANK_MODEL=) switches reranking off
+    voyage_model: str = "voyage-4"  # change in .env (VOYAGE_MODEL) to try another; must give 1024 numbers
 
     demo_mode: bool = False
     admin_emails: Annotated[list[str], NoDecode] = []

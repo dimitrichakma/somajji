@@ -1,0 +1,26 @@
+# The three WHO guides. PDFs are downloaded by scripts/download_sources.py and are not committed.
+# If a download fails, open `landing_page`, download the PDF by hand and save it as data/sources/<name>.pdf.
+# If WHO updates a file, the sha256 check fails on purpose: look at the new file, then update sha256 here.
+sources:
+  - name: pfa
+    title: "Psychological first aid: Guide for field workers (WHO, 2011)"
+    url: https://iris.who.int/server/api/core/bitstreams/e7e129fb-b306-496d-84a5-67bb70abc130/content
+    landing_page: https://www.who.int/publications/i/item/9789241548205
+    sha256: 9e688553fbacc1f7e1a0144e59c97585d384e09197d5044f4604725089b85089
+    # The WHO page names no Creative Commons licence, only its permissions and licensing policy. Check before publishing.
+    licence: "Not stated on the WHO page (see WHO permissions and licensing policy)"
+
+  - name: mhgap
+    title: "mhGAP Intervention Guide, Version 2.0 (WHO, 2016)"
+    url: https://iris.who.int/server/api/core/bitstreams/6ded7ffd-9d69-493a-b48a-0b3e6250c173/content
+    landing_page: https://www.who.int/publications/i/item/9789241549790
+    sha256: 3cbe88544386ab6ae55cd6d48d6c06484a5425f1e875e4359f87f4e44a5e1fd6
+    # A 3.0 could not be confirmed on WHO's site (2026-10-04), so 2.0 is used. The WHO page says only "see permissions and licensing policy".
+    licence: "Not stated on the WHO page (see WHO permissions and licensing policy)"
+
+  - name: pmplus
+    title: "Problem Management Plus (PM+): individual psychological help for adults impaired by distress in communities exposed to adversity (WHO, 2018)"
+    url: https://iris.who.int/server/api/core/bitstreams/0d493975-285d-4d0b-86b1-2365cfe45748/content
+    landing_page: https://www.who.int/publications/i/item/WHO-MSD-MER-18.5
+    sha256: aaa6ce06dacc1058ba8b695b7d8146d33abfdfcf8a13ea7d888f71a01a833cbe
+    licence: "CC BY-NC-SA 3.0 IGO"

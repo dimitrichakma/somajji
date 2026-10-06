@@ -1,0 +1,137 @@
+# Bangla questions against the English guides, grounded in Chittagong Hill Tracts life. INFORMATIONAL ONLY:
+# the result goes in the decision log, there is no pass or fail. Fixing weak Bangla retrieval is Phase 7,
+# not Phase 1.
+#
+# Run: uv run python -m eval.retrieval_eval --informational --questions data/retrieval_eval_bangla.yaml
+#
+# Why 16 and why different from the English set: a volunteer types in Bangla (or English) after talking with
+# the person in a local language. These are different situations from the English questions, so the Bangla
+# score is not just the English score translated. Styles are mixed on purpose, as people really type:
+#   careful written Bangla (3), everyday spoken Bangla (6), Bangla with English words mixed in (3),
+#   Banglish, which is Bangla in English letters (4).
+# Quotes (`evidence`) stay English because the guides are English; --check proves each is on its page.
+#
+# Drafted by Claude at Dimitri's request on 2026-10-06. Dimitri read the first three and said they sound
+# natural; this set replaces and extends them, so please read the new ones, especially the Banglish ones.
+# No real people or places are named.
+#
+# `reference_answer`: a short plain Bangla answer written by Claude from what the cited page says, so a Bangla
+# reader can judge the situation and, later, so Phases 3 and 7 have an example of a good Bangla answer. It is NOT
+# WHO text and nothing checks it (only the English `evidence` quote is machine-checked). It gives no medicine
+# advice. Dimitri: please read these and tell me which sound wrong or unnatural before they count as references.
+
+questions:
+  # ---------------------------------------------------------------- pfa (5)
+  - question: "পাহাড়ধসে বেঁচে যাওয়া এক কৃষকের হাত কাঁপছে, তিনি বলছেন সবকিছু ফাঁকা আর অবাস্তব লাগছে, সাধারণ প্রশ্নেরও উত্তর দিতে পারছেন না। আমি কীভাবে তাঁকে শান্ত হতে সাহায্য করতে পারি?"
+    source: pfa
+    pages: [23]
+    evidence: "Place and feel their feet on the floor."
+    reference_answer: "শান্ত ও নরম গলায় কথা বলুন, তাঁর পাশে থাকুন এবং মনে করিয়ে দিন যে আপনি সাহায্য করতে এসেছেন এবং (যদি সত্যি হয়) তিনি এখন নিরাপদ। তাঁর যদি সবকিছু অবাস্তব লাগে, তাঁকে মেঝেতে পা রেখে অনুভব করতে, হাঁটুর ওপর আঙুল দিয়ে আলতো টোকা দিতে এবং আশেপাশে যা দেখছেন বা শুনছেন সেই শান্ত জিনিসগুলোর কথা বলতে বলুন। ধীরে ধীরে শ্বাস নিতেও উৎসাহ দিন।"
+    note: "careful written; landslide survivor in shock"
+
+  - question: "আগুনে ঘর পুড়ে যাওয়ার পর এক বুড়ো মানুষ একা বসে আছে, কারো সাথে কথা বলে না। আমি ওর কাছে গিয়ে কীভাবে শুরু করব?"
+    source: pfa
+    pages: [22]
+    evidence: "Ask if you can provide help."
+    reference_answer: "সম্মানের সঙ্গে এবং তাঁদের সংস্কৃতি মেনে কাছে যান। নিজের নাম বলে পরিচয় দিন এবং জিজ্ঞেস করুন আপনি সাহায্য করতে পারেন কি না। সম্ভব হলে একটি শান্ত, নিরাপদ জায়গায় কথা বলুন, তাঁকে একটু পানি দিন, আর তিনি খুব ভেঙে পড়লে তাঁকে একা রাখবেন না।"
+    note: "everyday spoken; house fire, how to approach"
+
+  - question: "আমাদের এলাকার একটা মেয়েকে বাজারে যাওয়ার রাস্তায় বাইরের কয়েকজন লোক disturb করেছে, এখন সে ভয়ে ঘর থেকে বেরই হচ্ছে না। আমি কী করতে পারি?"
+    source: pfa
+    pages: [36]
+    evidence: "helping them to connect with their loved ones and other trusted people"
+    reference_answer: "যাঁরা বৈষম্য বা সহিংসতার ঝুঁকিতে থাকেন, তাঁদের বিশেষ সুরক্ষা ও অতিরিক্ত সহায়তা লাগতে পারে। তাঁকে নিরাপদে থাকার জায়গা খুঁজে পেতে সাহায্য করুন, প্রিয়জন ও বিশ্বাসযোগ্য মানুষের সঙ্গে যোগাযোগ করিয়ে দিন, এবং কোথায় কী সহায়তা পাওয়া যায় তা জানিয়ে প্রয়োজনে সরাসরি সেই সেবার সঙ্গে যুক্ত করুন।"
+    note: "mixed with English; harassment of a girl and fear of leaving home"
+
+  - question: "amar bhatija 15 bochor, dangar por theke ekdom chup kore thake, kothao jay na. ami ki korbo?"
+    source: pfa
+    pages: [31, 33]
+    evidence: "Allow them to be sad. Don’t expect them to be tough."
+    reference_answer: "কিশোর-কিশোরীরা অনেক সময় নিজেকে অসাড় মনে করে এবং বন্ধুদের থেকে আলাদা হয়ে যায়। তাকে সময় ও মনোযোগ দিন, নিয়মিত রুটিন বজায় রাখতে সাহায্য করুন এবং কী ঘটেছে তার সত্যিটা জানান। তাকে দুঃখ পেতে দিন, শক্ত থাকার আশা করবেন না। বিচার না করে তার ভয় ও চিন্তার কথা শুনুন, আর সুযোগ পেলে কাজে লাগার সুযোগ দিন।"
+    note: "Banglish; withdrawn teenager after the clashes"
+
+  - question: "শুনেছি ওপাড়ায় রাতে ঝামেলা হয়েছে, লোকজন ভয়ে আছে। আমি যেতে চাই, কিন্তু রাস্তাটা safe কি না বুঝতে পারছি না। যাব, নাকি অপেক্ষা করব?"
+    source: pfa
+    pages: [19]
+    evidence: "If you are not certain about the safety of the crisis site, then do not go."
+    reference_answer: "জায়গাটা নিরাপদ কি না নিশ্চিত না হলে সেখানে যাবেন না। যাঁদের সাহায্য দরকার তাঁদের জন্য অন্য কারও কাছ থেকে সহায়তা জোগাড়ের চেষ্টা করুন। সম্ভব হলে নিরাপদ দূরত্ব থেকে বিপদে থাকা মানুষের সঙ্গে কথা বলুন।"
+    note: "mixed with English; is it safe to go after trouble in a hamlet"
+
+  # ---------------------------------------------------------------- mhgap (6)
+  - question: "amader para'r ek chele kaj paina, shob shomoy mon kharap kore thake, ar loke take 'aloshe' bole. ami ki bolbo?"
+    source: mhgap
+    pages: [27]
+    evidence: "The occurrence of depression does not mean that the person is weak or lazy."
+    reference_answer: "বিষণ্ণতা খুব সাধারণ একটি অবস্থা, যা যে কারও হতে পারে; এর মানে এই নয় যে মানুষটি দুর্বল বা অলস। অন্যরা অনেক সময় 'আরও শক্ত হও' বলে, কারণ এটি চোখে দেখা যায় না। বিষণ্ণ মানুষ নিজেকে ও ভবিষ্যৎকে অযথা খারাপভাবে দেখে, কিন্তু অবস্থা ভালো হলে এই ভাবনাও কমে। তাঁকে নিয়মিত ঘুম ও খাওয়া, শরীর নড়াচড়া এবং পরিচিতদের সঙ্গে সময় কাটাতে উৎসাহ দিন। নিজেকে আঘাত করার চিন্তা এলে তা কোনো বিশ্বস্ত মানুষকে জানাতে এবং সঙ্গে সঙ্গে সাহায্য নিতে বলুন।"
+    note: "Banglish; unemployed young man called lazy"
+
+  - question: "এক বৃদ্ধ তাঁর বাপ-দাদার জমি হারিয়ে সারাদিন চুপ করে বসে থাকেন, বলেন বুকের ভেতরটা ফাঁকা হয়ে গেছে। এটা কি শোকের মতো কিছু? তাঁর পরিবারকে আমি কী বলব?"
+    source: mhgap
+    pages: [146]
+    evidence: "One can grieve for a person, a place, or property"
+    reference_answer: "বড় কোনো ক্ষতিতে শোক করা স্বাভাবিক; মানুষ কেবল প্রিয়জন নয়, জায়গা বা সম্পত্তি হারালেও শোক করতে পারে। একেকজন একেকভাবে শোক করেন, কেউ কাঁদেন, কেউ চুপ থাকেন; কান্না মানে দুর্বলতা নয়। বেশিরভাগ ক্ষেত্রে সময়ের সঙ্গে কষ্ট কমে, যদিও কোনো স্মৃতি এলে আবার আগের মতো খারাপ লাগতে পারে। মন দিয়ে শুনুন, ঘটনাটা বলতে চাপ দেবেন না, আর তাঁর প্রয়োজনগুলোর খোঁজ নিন। অন্তত ছয় মাস ধরে দৈনন্দিন কাজ খুব কঠিন হলে বিশেষজ্ঞের পরামর্শ নিন।"
+    note: "careful written; grief for lost ancestral land"
+
+  - question: "শেষকৃত্যের রীতি ঠিকমতো পালন করা যায়নি, কারণ ওই সময় গ্রামে খুব ভয় আর অশান্তি ছিল। পরিবারটা এখন একেবারে ভেঙে পড়েছে। আমি কীভাবে পাশে দাঁড়াব?"
+    source: mhgap
+    pages: [146]
+    evidence: "Ask if appropriate mourning ceremonies/rituals have happened or been planned."
+    reference_answer: "প্রিয়জন হারালে সংস্কৃতি অনুযায়ী শোক ও শেষকৃত্যের রীতি পালন করা গুরুত্বপূর্ণ। জিজ্ঞেস করুন উপযুক্ত শোকানুষ্ঠান বা রীতি হয়েছে কি না, বা ঠিক করা আছে কি না; না হয়ে থাকলে কী বাধা আছে এবং কীভাবে তা কাটানো যায় তা নিয়ে তাঁদের সঙ্গে কথা বলুন। মন দিয়ে শুনুন এবং ঘটনা নিয়ে কথা বলতে চাপ দেবেন না।"
+    note: "everyday spoken; funeral rites that could not be held"
+
+  - question: "একটা মেয়ে বলছে তার স্বামী তাকে মারে, কিন্তু শাশুড়ি পাশে বসে আছে বলে সে ঠিকমতো কথা বলতে পারছে না। আমি কী করব?"
+    source: mhgap
+    pages: [6]
+    evidence: "If carers are present, suggest to speak with the person alone"
+    reference_answer: "যতটা সম্ভব নিরিবিলি জায়গায় কথা বলুন এবং জানিয়ে দিন যে তাঁর কথা গোপন থাকবে। পরিবারের কেউ পাশে থাকলে মানুষটির সঙ্গে একা কথা বলার প্রস্তাব দিন। সহিংসতার মতো কঠিন কথা কেউ জানালে বিশেষ সংবেদনশীল থাকুন, আবার মনে করিয়ে দিন যে এটি গোপন থাকবে, এবং স্বীকার করুন যে কথাটা বলা তাঁর জন্য কঠিন ছিল।"
+    note: "everyday spoken; violence at home, a relative sitting beside her"
+
+  - question: "আমাদের পাড়ায় একটা মেয়ে হঠাৎ পড়ে গিয়ে হাত-পা ঝাঁকাতে লাগল। কেউ বলছে ভূতে ধরেছে, ওঝা ডাকতে হবে। আমি তখন কী করব?"
+    source: mhgap
+    pages: [64]
+    evidence: "it is not caused by witchcraft or spirits"
+    reference_answer: "খিঁচুনি মস্তিষ্কে অতিরিক্ত বৈদ্যুতিক কর্মকাণ্ডের কারণে হয়; এটি ভূত-প্রেত বা জাদুটোনার কারণে হয় না। খিঁচুনির সময় মানুষটিকে একপাশে কাত করে শুইয়ে দিন, মাথা ঘুরিয়ে দিন যাতে শ্বাস নিতে পারেন; মুখে কিছু ঢোকাবেন না এবং জোর করে চেপে ধরবেন না। খিঁচুনি থামা ও জ্ঞান ফেরা পর্যন্ত পাশে থাকুন। ওঝা বা ধর্মীয় চিকিৎসকের কাছে যাওয়াকে সম্মান জানিয়েও স্বাস্থ্যকেন্দ্রে দেখানোর প্রয়োজনীয়তার ওপর জোর দিন।"
+    note: "everyday spoken; a fit, belief in spirits, traditional healer"
+
+  - question: "আমার ভাই মানসিক রোগী, তাকে দেখাশোনা করতে করতে মা খুব ক্লান্ত আর বিরক্ত হয়ে গেছে। মাকে কীভাবে সাহায্য করব?"
+    source: mhgap
+    pages: [14]
+    evidence: "Acknowledge that it can be challenging to care for people with MNS conditions."
+    reference_answer: "স্বীকার করুন যে মানসিক সমস্যায় থাকা মানুষের যত্ন নেওয়া কঠিন হতে পারে। যত্নকারীর নিজের প্রয়োজন কী, এবং তাঁর পরিবার, কাজ, সামাজিক জীবন ও স্বাস্থ্যের ওপর কী প্রভাব পড়ছে তা বুঝুন। সম্ভব হলে সহায়ক গোষ্ঠী বা পারিবারিক সহায়তায় যুক্ত হতে উৎসাহ দিন, এবং রোগীর সম্মতি নিয়ে যত্নকারীকে অবস্থার খবর জানান।"
+    note: "everyday spoken; a tired carer in the family"
+
+  # ---------------------------------------------------------------- pmplus (5)
+  - question: "নতুন বিধিনিষেধের পর এক বৃদ্ধ জুমচাষি আর জমিতে যাচ্ছেন না, বলছেন মন ভালো হলে যাবেন। আমি কীভাবে তাঁকে আবার শুরু করতে সাহায্য করতে পারি?"
+    source: pmplus
+    pages: [57]
+    evidence: "do first and the motivation or positive feelings will follow"
+    reference_answer: "অনেকে মন ভালো না থাকলে কাজ বন্ধ করে দেন, আর তাতে মন আরও খারাপ হয়। বোঝান যে আগে কাজটা শুরু করুন, ইচ্ছা ও ভালো লাগা পরে আসবে। প্রথমে খুব ছোট ও সহজ লক্ষ্য ঠিক করুন; যেমন একজন বন্ধুর সঙ্গে গিয়ে শুধু দেখে আসা। ছোট সাফল্যও মনোবল বাড়ায়।"
+    note: "careful written; jhum farmer who stopped going to his field"
+
+  - question: "ekjon bolche tar jomi chole gese, shob shesh. ami ki bole tar kosto bujhte parchi eta dekhabo?"
+    source: pmplus
+    pages: [22]
+    evidence: "You went through a lot."
+    reference_answer: "সহানুভূতি দেখানোর কিছু বাক্য: 'এটা আপনার জন্য খুবই কঠিন বা কষ্টের ছিল', 'আপনি অনেক কিছুর মধ্য দিয়ে গেছেন', 'আপনার কষ্টটা আমি বুঝতে পারছি'। সংস্কৃতি অনুযায়ী চোখের দিকে তাকানো ও মাথা নাড়ার মতো শারীরিক ভাষাও দেখায় যে আপনি শুনছেন। তবে তাঁর অনুভূতি নিজের করে নেবেন না, তাতে আপনি নিজেই ক্লান্ত হয়ে পড়তে পারেন।"
+    note: "Banglish; how to show understanding to someone who lost his land"
+
+  - question: "জমির মামলা কত বছর ধরে চলছে, লোকটা বলে 'কিছুই বদলাবে না', কোনো উপায়ের কথা ভাবতেই পারে না। কীভাবে তাকে ভাবতে সাহায্য করব?"
+    source: pmplus
+    pages: [49]
+    evidence: "Asking them to think of ideas that might work for a friend in a similar situation"
+    reference_answer: "যাঁরা খুব হতাশ, তাঁদের পক্ষে সমাধানের কথা ভাবা কঠিন, কারণ তাঁরা মনে করেন কিছুই বদলাবে না। তাঁকে জিজ্ঞেস করুন একই অবস্থায় থাকা একজন বন্ধুর জন্য তিনি কী উপায় ভাববেন, অথবা আগে কখন কী চেষ্টা করেছিলেন। শুরুতে যত বেশি সম্ভব উপায় তালিকা করতে বলুন, ভালো-মন্দ বিচার পরে হবে।"
+    note: "everyday spoken; years-long land case and hopelessness"
+
+  - question: "একজন মহিলা তাঁর কষ্টের কথা পাড়ায় কাকে বলবেন বুঝতে পারছেন না, কাউকে trust করতে ভয় পান। আমি তাঁকে কী বলব?"
+    source: pmplus
+    pages: [66]
+    evidence: "Trust is something that is developed gradually with someone over time."
+    reference_answer: "বিশ্বাস ধীরে ধীরে, সময়ের সঙ্গে তৈরি হয়। তাই প্রথমে নিজের কষ্টের ছোট ও কম গুরুত্বপূর্ণ অংশ কাউকে বলে দেখতে বলুন; সেই কথা যদি তিনি অন্যদের বলে দেন, বোঝা যাবে তিনি ভরসাযোগ্য নন। যাঁর কোনো সহায়তা নেই, তাঁকে একজন বিশ্বস্ত বন্ধু, পরিবারের সদস্য বা কোনো সংগঠনের সঙ্গে যুক্ত হতে সাহায্য করুন।"
+    note: "mixed with English; fear of trusting anyone in the hamlet"
+
+  - question: "amar masi ghor ar jhum harano por shara din boshe thake, kichu kore na. chhoto ki ki kaj dhore dite pari?"
+    source: pmplus
+    pages: [63]
+    evidence: "Tidy areas of the house (choose one area of the house, not the whole house)"
+    reference_answer: "খুব ছোট ও সহজ কাজ দিয়ে শুরু করুন। যেমন ঘরের শুধু একটি জায়গা ঝাড়ু দেওয়া বা গোছানো (পুরো বাড়ি নয়), কাপড় ধোয়া, রান্না করা, কিংবা পরিবারের কারও সঙ্গে হেঁটে আসা। কাজ ছোট হলে শেষ করা সহজ হয়।"
+    note: "Banglish; a woman who lost her house and jhum field, small first tasks"

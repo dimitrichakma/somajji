@@ -1,0 +1,157 @@
+# Golden question set for Phase 1 retrieval: is the right page of the right guide in the top 5?
+#
+# WHO THIS IS FOR: Somajji helps local volunteers in the Chittagong Hill Tracts (Jumma / minority communities).
+#   The volunteer talks with the person in the local language, then types a short summary. So every question
+#   below is a short situation as such a volunteer might type it, in the setting of hill life: jhum farming,
+#   land worries, the headman, the para (hamlet), landslides and fires in the monsoon, long trips by boat to a
+#   clinic, temples and rituals, young people without work. No real people or places are named (the privacy
+#   filter removes names, phones and places before anything is searched).
+#
+# HOW THIS SET WAS MADE (be honest about it in the README):
+#   Drafted by Claude (an AI) from the three WHO guides on 2026-10-06, at Dimitri's request. The first version
+#   was generic; after Dimitri's spot check all 20 were rewritten in Hill Tracts settings (same pages, same
+#   quotes, new situations). The spec asked for hand-written questions; this is a known weakness, because the
+#   author had read the guides. Two guards are in place:
+#     1. every question has an `evidence` quote copied word for word from its answer page, and
+#        `uv run python -m eval.retrieval_eval --check` opens the real PDF and fails if the quote is not
+#        on one of the listed pages;
+#     2. --check warns when a question repeats 4 or more words in a row from its page.
+#   Spot-check status: Dimitri checked the first version and asked for changes; the Hill Tracts rewrite is NOT
+#   yet spot-checked. Check it yourself: `uv run python -m eval.retrieval_eval --list` (each question has a link
+#   to its PDF page).
+#   Tip: if a command says "unrecognized arguments", the two hyphens were probably turned into a long dash by
+#   the app you copied from. The tools now accept that, but typing the hyphens by hand always works.
+#
+# FORMAT (one entry per question):
+#   question: a short situation in everyday words, as a volunteer would type it
+#   source:   pfa | mhgap | pmplus
+#   pages:    printed page number(s) that answer it; any of them counts as a hit
+#   evidence: short quote copied word for word from that page
+#   note:     optional: the Hill Tracts context and how the question is meant to be hard or easy
+#
+# Printed page to PDF page (what a PDF viewer shows): pfa +7, mhgap +8, pmplus +2.
+# No medicine or dosage questions: Somajji refuses those, so retrieval is not scored on them.
+
+questions:
+  # ---------------------------------------------------------------- pfa (7)
+  - question: "The headman is asking me what a distressed woman told me about her family. Can I tell him?"
+    source: pfa
+    pages: [9, 15]
+    evidence: "Don’t share the person’s story with others."
+    note: "Hill Tracts: headman and village authority; confidentiality; short and casual"
+
+  - question: "A family left their house after a landslide in the monsoon and is now staying with a relative two hours away by boat. The father lost his jhum field and sits outside all day, the mother says the children have not had a proper meal, and the youngest has a fever. I can only visit twice a week. What can I do for them?"
+    source: pfa
+    pages: [24, 25]
+    evidence: "try to link them to the help available"
+    note: "Hill Tracts: landslide, jhum, remote and boat travel; long and detailed; many needs at once"
+
+  - question: "After the fire in our para, some of the older women only speak their own language and the relief team cannot understand them. They sit apart from everyone and do not ask for anything."
+    source: pfa
+    pages: [10]
+    evidence: "What is the customary way of greeting people in this culture?"
+    note: "Hill Tracts: local languages and culture; indirect, no question is asked"
+
+  - question: "When the river rose at night and the families ran uphill, a boy of about eight ended up alone in the temple courtyard. He says he lost his parents in the dark. What should I do with him?"
+    source: pfa
+    pages: [32, 34]
+    evidence: "Don’t leave the child unattended."
+    note: "Hill Tracts: night flood, families fleeing uphill, temple as a gathering place; the answer is in a table"
+
+  - question: "A woman in her 30s, since the landslide took her house, has stopped cooking and does not feed or wash her children. She just stares at the hills. Can I handle this alone or do I need to call someone?"
+    source: pfa
+    pages: [5]
+    evidence: "people who are so upset that they cannot care for themselves or their children"
+    note: "Hill Tracts: landslide; when to get more help than a volunteer can give"
+
+  - question: "I am a volunteer and my own family also fears losing our land. For three weeks I have been visiting distressed families, I cannot sleep, and I feel guilty that I cannot solve their problems. What should I do for myself?"
+    source: pfa
+    pages: [39]
+    evidence: "Remember that you are not responsible for solving all of people’s problems."
+    note: "Hill Tracts: the volunteer is from the same community and shares the worry; helper self-care"
+
+  - question: "An old man says the flood came because the family did not perform the ritual properly, and he asks me to agree with him. What should I say?"
+    source: pfa
+    pages: [29]
+    evidence: "Don’t agree with or reject a spiritual belief or interpretation of the crisis, even if the person asks you to do so."
+    note: "Hill Tracts: religious and traditional beliefs; harder, the answer is in a box"
+
+  # ---------------------------------------------------------------- mhgap (7)
+  - question: "A woman's husband died last month. She cries every day and her relatives say a strong woman would not cry like this, so she feels ashamed. What can I tell her?"
+    source: mhgap
+    pages: [146]
+    evidence: "Crying does not mean one is weak."
+    note: "Hill Tracts: family pressure around grief"
+
+  - question: "Since the night of the fire and the shouting in the village, a man in his 40s has headaches, his heart races at loud noises, and his sleep is broken. Is he seriously ill or will it pass?"
+    source: mhgap
+    pages: [147]
+    evidence: "In most cases the symptoms are likely to diminish over time"
+    note: "Hill Tracts: reactions after a frightening night; no blame is placed on anyone"
+
+  - question: "A girl of 17 panics, with a pounding heart, whenever she thinks of the exam fees the family cannot pay since the harvest failed. Is there a simple thing I can show her to calm her body?"
+    source: mhgap
+    pages: [149]
+    evidence: "breathe in through your nose and out through your mouth"
+    note: "Hill Tracts: failed jhum harvest and school fees; harder, the page is a script that never uses the word panic"
+
+  - question: "A jhum farmer has no harvest this year, owes the shopkeeper money, and has stopped joining the village gatherings. Besides listening, what else can I do?"
+    source: mhgap
+    pages: [12]
+    evidence: "Strengthen social supports and try to reactivate the person’s social networks."
+    note: "Hill Tracts: jhum, debt, withdrawal from the community"
+
+  - question: "A father who lost his job hits and shouts at his nine year old son whenever the boy is naughty, and the boy now fights other children in the para. What advice can I give the father?"
+    source: mhgap
+    pages: [87]
+    evidence: "Put off discussions with the child/adolescent until you are calm."
+    note: "Hill Tracts: job loss and stress at home, effect on a child"
+
+  - question: "A man in our para drinks homemade rice liquor with his friends every evening since he lost his land, and he says he wants to cut down. How can I help him?"
+    source: mhgap
+    pages: [124]
+    evidence: "Identify triggers for use and ways to avoid them."
+    note: "Hill Tracts: local rice liquor and land loss; neighbouring pages are about related things, so this is strict"
+
+  - question: "A teenage boy who dropped out of school and has no work told me that life is not worth living. I am afraid that if I ask him about suicide I will put the idea in his head. Should I ask?"
+    source: mhgap
+    pages: [138]
+    evidence: "Talking about suicide does not provoke the act of suicide."
+    note: "Hill Tracts: young people without school or work; sensitive, in Somajji the safety layer handles this input first and retrieval is only the WHO text"
+
+  # ---------------------------------------------------------------- pmplus (6)
+  - question: "A man keeps asking me to decide for him whether to sell his land to a trader because of his debts. I am tempted to just tell him. Is that right?"
+    source: pmplus
+    pages: [24]
+    evidence: "You should generally not give advice to clients."
+    note: "Hill Tracts: land and debt; the helping skill of not giving advice"
+
+  - question: "An old woman in a remote hamlet, whose children went to work in the city, has not spoken to her neighbours for months and gets nervous when I suggest visiting them. Where do I begin?"
+    source: pmplus
+    pages: [69]
+    evidence: "Could they start by smiling at familiar people?"
+    note: "Hill Tracts: elders left behind when young people migrate for work"
+
+  - question: "A young man came back from the city after losing his factory job and lies in bed all day. He says he will do things when he feels like it. How can I get him moving?"
+    source: pmplus
+    pages: [57]
+    evidence: "do first and the motivation or positive feelings will follow"
+    note: "Hill Tracts: migration for factory work and return; paraphrased"
+
+  - question: "A widow has lost interest in everything since her husband died four months ago and mostly stays inside, though the funeral rites were done properly. Is this normal or should I worry?"
+    source: pmplus
+    pages: [64]
+    evidence: "In most cases, people will start to return to their normal selves within the first six months after their loss."
+    note: "Hill Tracts: grief with the rites completed"
+
+  - question: "A man decided to ask the headman to help him with the land papers at the office, but he never follows through on his plans. How can I help him actually do it?"
+    source: pmplus
+    pages: [50]
+    evidence: "breaking down the solution into small steps"
+    note: "Hill Tracts: land papers and the headman; neighbouring pages are about the same topic, so this is strict"
+
+  - question: "A woman is crying hard in front of me. In our community people comfort each other by holding hands, but I am a man and she is not family. Should I take her hand?"
+    source: pmplus
+    pages: [27]
+    evidence: "we would encourage you not to use physical contact or touch to express support and concern to clients"
+    note: "Hill Tracts: customs about touch between men and women"
