@@ -15,6 +15,12 @@ dependencies = [
     "langchain-anthropic>=1.7.1",
     "langchain-core>=1.6.2",
     "python-dotenv>=1.2.3",
+    "pinecone>=10.0.0",
+    "voyageai>=0.5.0",
+    "pymupdf>=1.28.2",
+    "pyyaml>=6.0.3",
+    "httpx>=0.28.1",
+    "langchain-text-splitters>=1.1.3",
 ]
 
 [dependency-groups]
@@ -30,3 +36,7 @@ default-groups = ["dev"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["."]
+# Live tests talk to Voyage and Pinecone (a few free tokens, a few reads). They run only on request:
+#   uv run pytest -m integration
+addopts = "-m 'not integration'"
+markers = ["integration: talks to the real Voyage and Pinecone services (needs keys and an ingested index)"]
